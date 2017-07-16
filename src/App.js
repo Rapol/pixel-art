@@ -11,7 +11,7 @@ export class App extends Component {
 
   render() {
     const colorSelectorHeight = 40;
-    const cellSize = 10;
+    const cellSize = 20;
     const { selectedColor } = this.state;
 
     return (

@@ -38,10 +38,7 @@ export class Cell extends Component {
         fill={initialColor}
         ref="cell"
         onClick={() => this.updateCell()}
-        onTap={() => this.updateCell()}
-        onTouchMove={() => this.updateCell()}
-        onMouseOver={e =>
-          (e.evt.buttons === 1 || e.evt.buttons === 3) && this.updateCell()}
+        onTap={() => this.updateCell()}        
       />
     );
   }

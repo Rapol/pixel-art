@@ -7,10 +7,23 @@ export class Cell extends Component {
     return false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.initialColor !== nextProps.initialColor) {
+      this.syncCell(nextProps.initialColor)
+    }
+  }
+
+  syncCell(color) {
+    const { cell } = this.refs;
+    cell.fill(color);
+    cell.draw();
+  }
+
   updateCell() {
     const { cell } = this.refs;
     const { selectedColor } = this.props;
     cell.fill(selectedColor);
+    this.updateCanvas();
     cell.draw();
   }
 
@@ -31,5 +44,25 @@ export class Cell extends Component {
           (e.evt.buttons === 1 || e.evt.buttons === 3) && this.updateCell()}
       />
     );
+  }
+
+  updateCanvas() {
+    const data = {
+      x: this.props.rowIndex,
+      y: this.props.colIndex,
+      color: this.props.selectedColor,
+      user: "pixel@rt.com"
+    }
+    return (async () => {
+      try {
+        let response = await fetch('https://6d5p2o5pm2.execute-api.us-east-1.amazonaws.com/dev/canvas', {
+          method: 'put',
+          body: JSON.stringify(data),
+        });
+        return await response;
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }
 }

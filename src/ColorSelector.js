@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ColorSelectorContainer = styled.section`
-  position: fixed;
   height: ${props => (props.height ? props.height : "40px")};
   background: #111111;
   z-index: 1;
@@ -22,28 +21,28 @@ const ColorBlock = styled.div`
   width: 30px;
 `;
 
-const colors = [
-  "rgb(255, 255, 255)",
-  "rgb(228, 228, 228)",
-  "rgb(136, 136, 136)",
-  "rgb(34, 34, 34)",
-  "rgb(255, 167, 209)",
-  "rgb(229, 0, 0)",
-  "rgb(229, 149, 0)",
-  "rgb(160, 106, 66)",
-  "rgb(229, 217, 0)",
-  "rgb(148, 224, 68)",
-  "rgb(2, 190, 1)",
-  "rgb(0, 211, 221)",
-  "rgb(0, 131, 199)",
-  "rgb(0, 0, 234)",
-  "rgb(207, 110, 228)",
-  "rgb(130, 0, 128)"
+export const COLORS = [
+  "#ffffff",
+  "#e4e4e4",
+  "#888888",
+  "#222222",
+  "#ffa7d1",
+  "#e50000",
+  "#e59500",
+  "#a06a42",
+  "#e5d900",
+  "#94e044",
+  "#02be01",
+  "#00d3dd",
+  "#0083c7",
+  "#0000ea",
+  "#cf6ee4",
+  "#820080"
 ];
 
 export const ColorSelector = ({ setSelectedColor }) => (
   <ColorSelectorContainer>
-    {colors.map(color => (
+    {COLORS.map(color => (
       <ColorBlock
         backgroundColor={color}
         key={color}
